@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -67,23 +66,36 @@
     text-align: center; letter-spacing: 2px;
     border-top: 1px solid rgba(100,180,165,0.3);
   }
+  .event-tag {
+    display: block; font-size: 9px; font-weight: 500;
+    color: #8a7a50; opacity: 0.8; margin-top: 2px;
+    white-space: nowrap; text-decoration: none;
+  }
+  .event-tag:hover { opacity: 1; text-decoration: underline; }
   .fb {
-    display: inline-block; background: #ff6b6b; color: white;
-    font-size: 9px; font-weight: 700; padding: 1px 4px;
+    display: inline-block; background: #5ecfb8; color: white;
+    font-size: 9px; font-weight: 700; padding: 1px 7px;
+    border-radius: 10px; margin-left: 3px; vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+  .jg-badge {
+    display: inline-block; background: #a855f7; color: white;
+    font-size: 9px; font-weight: 700; padding: 1px 5px;
     border-radius: 3px; margin-left: 2px; vertical-align: middle;
   }
-  .footer { text-align: center; font-size: 11px; color: #4a7a70; margin-top: 14px; line-height: 1.7; }
   .legend { display: flex; justify-content: center; gap: 16px; margin-bottom: 10px; font-size: 12px; }
   .legend-item { display: flex; align-items: center; gap: 5px; color: #1a3a35; }
   .legend-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
   .dot-jion { background: #ff8fab; }
   .dot-taemin { background: #a8d8ea; }
+  .footer { text-align: center; font-size: 10px; color: #4a7a70; margin-top: 14px; line-height: 1.7; }
 </style>
 </head>
 <body>
 <div class="logo-area">
   <div class="musical-label">MUSICAL</div>
   <div class="title-kr">사의찬미</div>
+  <div class="title-en">Hwang Jinyi TRAGEDY</div>
 </div>
 <div class="section-title">출연 일정</div>
 <div class="filter-area">
@@ -95,7 +107,7 @@
   <div class="legend-item"><span class="legend-dot dot-jion"></span>김지온 출연</div>
   <div class="legend-item"><span class="legend-dot dot-taemin"></span>원태민 출연</div>
 </div>
-<div class="count-info" id="countInfo">전체 26회</div>
+<div class="count-info" id="countInfo">전체 25회</div>
 
 <div class="table-wrap">
   <div class="table-header">
@@ -107,7 +119,7 @@
 
   <div class="row jion-row" data-type="jion">
     <div class="cell date">6월 17일</div><div class="cell day day-wkd">수</div><div class="cell time">20:00</div>
-    <div class="cell">온주완<span class="fb">첫공</span></div><div class="cell">여은</div>
+    <div class="cell">온주완<span class="fb">첫공</span></div><div class="cell">여은<span class="fb">첫공</span></div>
     <div class="cell"><span class="sinae sinae-jion">김지온<span class="fb">첫공</span></span></div>
   </div>
   <div class="row taemin-row" data-type="taemin">
@@ -126,22 +138,22 @@
     <div class="cell"><span class="sinae sinae-taemin">원태민</span></div>
   </div>
   <div class="row taemin-row" data-type="taemin">
-    <div class="cell date">6월 24일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div>
+    <div class="cell date">6월 24일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div>
     <div class="cell">선한국</div><div class="cell">정우연</div>
     <div class="cell"><span class="sinae sinae-taemin">원태민</span></div>
   </div>
   <div class="row jion-row" data-type="jion">
-    <div class="cell date">6월 26일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div>
+    <div class="cell date">6월 26일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div>
     <div class="cell">임준혁</div><div class="cell">정우연</div>
     <div class="cell"><span class="sinae sinae-jion">김지온</span></div>
   </div>
   <div class="row taemin-row" data-type="taemin">
-    <div class="cell date">6월 27일</div><div class="cell day day-sat">토</div><div class="cell time">19:00</div>
+    <div class="cell date">6월 27일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sat">토</div><div class="cell time">19:00</div>
     <div class="cell">이진혁</div><div class="cell">여은</div>
     <div class="cell"><span class="sinae sinae-taemin">원태민</span></div>
   </div>
   <div class="row jion-row" data-type="jion">
-    <div class="cell date">6월 28일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div>
+    <div class="cell date">6월 28일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div>
     <div class="cell">임준혁</div><div class="cell">여은</div>
     <div class="cell"><span class="sinae sinae-jion">김지온</span></div>
   </div>
@@ -224,12 +236,12 @@
     <div class="cell"><span class="sinae sinae-taemin">원태민</span></div>
   </div>
   <div class="row jion-row" data-type="jion">
-    <div class="cell date">7월 26일</div><div class="cell day day-sun">일</div><div class="cell time">14:00</div>
+    <div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">14:00</div>
     <div class="cell">선한국</div><div class="cell">정우연</div>
     <div class="cell"><span class="sinae sinae-jion">김지온</span></div>
   </div>
   <div class="row taemin-row" data-type="taemin">
-    <div class="cell date">7월 26일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div>
+    <div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div>
     <div class="cell">온주완</div><div class="cell">최연우</div>
     <div class="cell"><span class="sinae sinae-taemin">원태민</span></div>
   </div>
@@ -238,7 +250,7 @@
 <div class="footer">상기 스케줄은 배우 및 제작사의 사정에 따라 사전 공지없이 변경될 수 있습니다.</div>
 
 <script>
-  const counts = { all: 26, jion: 12, taemin: 14 };
+  const counts = { all: 25, jion: 12, taemin: 13 };
   const labels = { all: '전체', jion: '김지온', taemin: '원태민' };
 
   function setFilter(type) {
@@ -247,7 +259,8 @@
 
     document.querySelectorAll('.row[data-type]').forEach(row => {
       const dt = row.getAttribute('data-type');
-      if (type === 'all' || dt === type) row.classList.remove('hidden');
+      const show = type === 'all' || dt === type;
+      if (show) row.classList.remove('hidden');
       else row.classList.add('hidden');
     });
 
