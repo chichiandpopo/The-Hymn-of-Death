@@ -58,12 +58,12 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .seat-map-section { max-width:640px; margin:16px auto 0; background:rgba(255,255,255,0.85); border-radius:16px; padding:14px 8px 16px; border:1px solid rgba(100,180,165,0.3); }
 .seat-map-title { text-align:center; font-size:13px; font-weight:700; color:#1a5a4a; margin-bottom:8px; letter-spacing:1px; }
 .stage-box { background:#ddd; border-radius:6px; text-align:center; font-size:11px; font-weight:700; color:#666; padding:5px 0; letter-spacing:3px; margin-bottom:4px; width:100%; }
-.seat-map { display:flex; justify-content:center; overflow-x:auto; }
-.seat-map-inner { display:inline-block; }
-.seat-row { display:flex; align-items:center; margin-bottom:1px; gap:1px; }
-.row-label { font-size:8px; font-weight:700; color:#4a7a70; width:11px; text-align:center; flex-shrink:0; }
-.seat-ph { width:15px; height:15px; flex-shrink:0; }
-.seat { width:15px; height:15px; border-radius:2px; font-size:6px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#f0f0f0; color:#aaa; border:1px solid #ddd; }
+.seat-map { width:100%; overflow-x:hidden; }
+.seat-map-inner { display:block; width:100%; }
+.seat-row { display:flex; align-items:center; margin-bottom:1px; gap:1px; width:100%; }
+.row-label { font-size:8px; font-weight:700; color:#4a7a70; flex-shrink:0; text-align:center; }
+.seat-ph { flex-shrink:0; }
+.seat { border-radius:2px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#f0f0f0; color:#aaa; border:1px solid #ddd; }
 .seat.mk1 { background:#ff6b9d !important; color:white !important; border-color:#c0004a !important; }
 .seat.mk2 { background:#6b9dff !important; color:white !important; border-color:#003acc !important; }
 .seat.mk3 { background:#ffa040 !important; color:white !important; border-color:#c05000 !important; }
@@ -108,34 +108,34 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 
   <div class="month-divider" id="div-6">6월</div>
 
-  <div class="row jion-row" data-type="jion"><div class="cell date">6월 17일</div><div class="cell day day-wkd">수</div><div class="cell time">20:00</div><div class="cell">온주완<span class="fb">첫공</span></div><div class="cell">여은<span class="fb">첫공</span></div><div class="cell"><span class="sinae sinae-jion">김지온<span class="fb">첫공</span></span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s1" placeholder="A-11"><div class="seat-tags" id="tags-s1"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 19일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">이진혁<span class="fb">첫공</span></div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민<span class="fb">첫공</span></span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s2" placeholder="A-11"><div class="seat-tags" id="tags-s2"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">6월 21일</div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s3" placeholder="A-11"><div class="seat-tags" id="tags-s3"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 21일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s4" placeholder="A-11"><div class="seat-tags" id="tags-s4"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 24일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s5" placeholder="A-11"><div class="seat-tags" id="tags-s5"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">6월 26일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">임준혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s6" placeholder="A-11"><div class="seat-tags" id="tags-s6"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 27일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sat">토</div><div class="cell time">19:00</div><div class="cell">이진혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s7" placeholder="A-11"><div class="seat-tags" id="tags-s7"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">6월 28일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s8" placeholder="A-11"><div class="seat-tags" id="tags-s8"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">6월 17일</div><div class="cell day day-wkd">수</div><div class="cell time">20:00</div><div class="cell">온주완<span class="fb">첫공</span></div><div class="cell">여은<span class="fb">첫공</span></div><div class="cell"><span class="sinae sinae-jion">김지온<span class="fb">첫공</span></span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s1" placeholder="A-11"><div class="seat-tags" id="tags-s1"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 19일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">이진혁<span class="fb">첫공</span></div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민<span class="fb">첫공</span></span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s2" placeholder="A-11"><div class="seat-tags" id="tags-s2"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">6월 21일</div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s3" placeholder="A-11"><div class="seat-tags" id="tags-s3"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 21일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s4" placeholder="A-11"><div class="seat-tags" id="tags-s4"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 24일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s5" placeholder="A-11"><div class="seat-tags" id="tags-s5"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">6월 26일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">임준혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s6" placeholder="A-11"><div class="seat-tags" id="tags-s6"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">6월 27일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sat">토</div><div class="cell time">19:00</div><div class="cell">이진혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s7" placeholder="A-11"><div class="seat-tags" id="tags-s7"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">6월 28일<a class="event-tag" href="https://x.com/NeoGloomyday/status/2062716037015937128?s=20" target="_blank">🎟 할인권 증정 위크</a></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s8" placeholder="A-11"><div class="seat-tags" id="tags-s8"></div></div></div>
 
   <div class="month-divider" id="div-7">7월</div>
 
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 1일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s9" placeholder="A-11"><div class="seat-tags" id="tags-s9"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 1일</div><div class="cell day day-wkd">수</div><div class="cell time">20:00</div><div class="cell">온주완</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s10" placeholder="A-11"><div class="seat-tags" id="tags-s10"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 4일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s11" placeholder="A-11"><div class="seat-tags" id="tags-s11"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 5일</div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s12" placeholder="A-11"><div class="seat-tags" id="tags-s12"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 5일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s13" placeholder="A-11"><div class="seat-tags" id="tags-s13"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 7일</div><div class="cell day day-wkd">화</div><div class="cell time">20:00</div><div class="cell">임준혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s14" placeholder="A-11"><div class="seat-tags" id="tags-s14"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 9일</div><div class="cell day day-wkd">목</div><div class="cell time">20:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s15" placeholder="A-11"><div class="seat-tags" id="tags-s15"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 11일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s16" placeholder="A-11"><div class="seat-tags" id="tags-s16"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 12일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s17" placeholder="A-11"><div class="seat-tags" id="tags-s17"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 14일</div><div class="cell day day-wkd">화</div><div class="cell time">20:00</div><div class="cell">선한국</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s18" placeholder="A-11"><div class="seat-tags" id="tags-s18"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 15일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">이진혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s19" placeholder="A-11"><div class="seat-tags" id="tags-s19"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 17일</div><div class="cell day day-wkd">금</div><div class="cell time">14:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s20" placeholder="A-11"><div class="seat-tags" id="tags-s20"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 18일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">온주완</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s21" placeholder="A-11"><div class="seat-tags" id="tags-s21"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 22일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">임준혁</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s22" placeholder="A-11"><div class="seat-tags" id="tags-s22"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 24일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">온주완</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s23" placeholder="A-11"><div class="seat-tags" id="tags-s23"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s24" placeholder="A-11"><div class="seat-tags" id="tags-s24"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" id="inp-s25" placeholder="A-11"><div class="seat-tags" id="tags-s25"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 1일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s9" placeholder="A-11"><div class="seat-tags" id="tags-s9"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 1일</div><div class="cell day day-wkd">수</div><div class="cell time">20:00</div><div class="cell">온주완</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s10" placeholder="A-11"><div class="seat-tags" id="tags-s10"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 4일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s11" placeholder="A-11"><div class="seat-tags" id="tags-s11"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 5일</div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s12" placeholder="A-11"><div class="seat-tags" id="tags-s12"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 5일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s13" placeholder="A-11"><div class="seat-tags" id="tags-s13"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 7일</div><div class="cell day day-wkd">화</div><div class="cell time">20:00</div><div class="cell">임준혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s14" placeholder="A-11"><div class="seat-tags" id="tags-s14"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 9일</div><div class="cell day day-wkd">목</div><div class="cell time">20:00</div><div class="cell">이진혁</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s15" placeholder="A-11"><div class="seat-tags" id="tags-s15"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 11일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s16" placeholder="A-11"><div class="seat-tags" id="tags-s16"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 12일</div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">임준혁</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s17" placeholder="A-11"><div class="seat-tags" id="tags-s17"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 14일</div><div class="cell day day-wkd">화</div><div class="cell time">20:00</div><div class="cell">선한국</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s18" placeholder="A-11"><div class="seat-tags" id="tags-s18"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 15일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">이진혁</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s19" placeholder="A-11"><div class="seat-tags" id="tags-s19"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 17일</div><div class="cell day day-wkd">금</div><div class="cell time">14:00</div><div class="cell">임준혁</div><div class="cell">여은</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s20" placeholder="A-11"><div class="seat-tags" id="tags-s20"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 18일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">온주완</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s21" placeholder="A-11"><div class="seat-tags" id="tags-s21"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 22일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">임준혁</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s22" placeholder="A-11"><div class="seat-tags" id="tags-s22"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 24일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">온주완</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s23" placeholder="A-11"><div class="seat-tags" id="tags-s23"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s24" placeholder="A-11"><div class="seat-tags" id="tags-s24"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><input class="seat-input" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s25" placeholder="A-11"><div class="seat-tags" id="tags-s25"></div></div></div>
 </div>
 
 <!-- 좌석 배치도 -->
@@ -182,35 +182,62 @@ const COLORS = [
 const showSeats = {};
 let focusedId = null;
 
-// 배치도 그리기
+// 배치도 그리기 - 화면 너비에 맞게 좌석 크기 동적 계산
 function buildMap() {
   const wrap = document.getElementById('seatMapInner');
   wrap.innerHTML = '';
+
+  // 가장 긴 행의 칸 수 계산 (좌석 + null 포함)
+  const maxCols = Math.max(...Object.values(SEATS).map(r => r.length));
+  // 라벨 2개(양쪽) + 칸수
+  // 사용 가능한 너비
+  const avail = Math.min(document.body.clientWidth - 20, 624);
+  const labelW = 11;
+  const gap = 1;
+  // 좌석 크기 = (가용너비 - 라벨*2 - gap*칸수) / 칸수
+  const sz = Math.max(10, Math.floor((avail - labelW * 2 - gap * maxCols) / maxCols));
+  const fontSize = Math.max(5, Math.floor(sz * 0.45));
+
   Object.keys(SEATS).forEach(row => {
     const rowEl = document.createElement('div');
     rowEl.className = 'seat-row';
+
     const ll = document.createElement('div');
-    ll.className = 'row-label'; ll.textContent = row;
+    ll.className = 'row-label';
+    ll.style.width = labelW + 'px';
+    ll.textContent = row;
     rowEl.appendChild(ll);
+
     SEATS[row].forEach(n => {
       if (n === null) {
         const ph = document.createElement('div');
         ph.className = 'seat-ph';
+        ph.style.width = sz + 'px';
+        ph.style.height = sz + 'px';
         rowEl.appendChild(ph);
       } else {
         const s = document.createElement('div');
         s.className = 'seat';
         s.id = 'S-' + row + '-' + n;
+        s.style.width = sz + 'px';
+        s.style.height = sz + 'px';
+        s.style.fontSize = fontSize + 'px';
         s.textContent = n;
         rowEl.appendChild(s);
       }
     });
+
     const rl = document.createElement('div');
-    rl.className = 'row-label'; rl.textContent = row;
+    rl.className = 'row-label';
+    rl.style.width = labelW + 'px';
+    rl.textContent = row;
     rowEl.appendChild(rl);
     wrap.appendChild(rowEl);
   });
 }
+
+// 화면 크기 변경 시 재빌드
+window.addEventListener('resize', () => { buildMap(); updateMap(); });
 
 function updateMap() {
   document.querySelectorAll('.seat').forEach(el => {
@@ -278,6 +305,11 @@ function confirmFocused() {
   input.focus();
 }
 
+function confirmSeat(sid) {
+  focusedId = sid;
+  confirmFocused();
+}
+
 function removeSeat(sid, key) {
   showSeats[sid] = (showSeats[sid]||[]).filter(s => s !== key);
   renderTags(sid);
@@ -323,10 +355,24 @@ function setFilter(type) {
   document.getElementById('countInfo').textContent = labels[type] + ' ' + counts[type] + '회';
 }
 
-// focus 추적
+// focus 추적 및 입력 감지
 document.querySelectorAll('.seat-input').forEach(inp => {
   inp.addEventListener('focus', () => { focusedId = inp.id.replace('inp-', ''); });
-  inp.addEventListener('keydown', e => { if (e.key === 'Enter') confirmFocused(); });
+
+  // PC 엔터
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); confirmFocused(); }
+  });
+
+  // 모바일: 입력할 때마다 패턴 완성 여부 체크 후 자동 등록
+  inp.addEventListener('input', () => {
+    const val = inp.value.trim().toUpperCase();
+    // A-11 또는 A11 형태가 완성됐을 때만 등록
+    if (/^[A-S]-?\d{1,2}$/.test(val) || /^[A-S]-?W$/.test(val)) {
+      focusedId = inp.id.replace('inp-', '');
+      confirmFocused();
+    }
+  });
 });
 
 buildMap();
