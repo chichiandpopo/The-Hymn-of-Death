@@ -58,8 +58,8 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .seat-map-section { max-width:640px; margin:16px auto 0; background:rgba(255,255,255,0.85); border-radius:16px; padding:14px 8px 16px; border:1px solid rgba(100,180,165,0.3); }
 .seat-map-title { text-align:center; font-size:13px; font-weight:700; color:#1a5a4a; margin-bottom:8px; letter-spacing:1px; }
 .stage-box { background:#ddd; border-radius:6px; text-align:center; font-size:11px; font-weight:700; color:#666; padding:5px 0; letter-spacing:3px; margin-bottom:4px; width:100%; }
-.seat-map { width:100%; overflow-x:hidden; }
-.seat-map-inner { display:block; width:100%; }
+.seat-map { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.seat-map-inner { display:inline-block; min-width:max-content; }
 .seat-row { display:flex; align-items:center; margin-bottom:1px; gap:1px; width:100%; }
 .row-label { font-size:8px; font-weight:700; color:#4a7a70; flex-shrink:0; text-align:center; }
 .seat-ph { flex-shrink:0; }
@@ -182,21 +182,10 @@ const COLORS = [
 const showSeats = {};
 let focusedId = null;
 
-// 배치도 그리기 - 화면 너비에 맞게 좌석 크기 동적 계산
 function buildMap() {
   const wrap = document.getElementById('seatMapInner');
   wrap.innerHTML = '';
-
-  // 가장 긴 행의 칸 수 계산 (좌석 + null 포함)
-  const maxCols = Math.max(...Object.values(SEATS).map(r => r.length));
-  // 라벨 2개(양쪽) + 칸수
-  // 사용 가능한 너비
-  const avail = Math.min(document.body.clientWidth - 20, 624);
-  const labelW = 11;
-  const gap = 1;
-  // 좌석 크기 = (가용너비 - 라벨*2 - gap*칸수) / 칸수
-  const sz = Math.max(10, Math.floor((avail - labelW * 2 - gap * maxCols) / maxCols));
-  const fontSize = Math.max(5, Math.floor(sz * 0.45));
+  const sz = 16, fontSize = 6, labelW = 11;
 
   Object.keys(SEATS).forEach(row => {
     const rowEl = document.createElement('div');
@@ -236,7 +225,6 @@ function buildMap() {
   });
 }
 
-// 화면 크기 변경 시 재빌드
 window.addEventListener('resize', () => { buildMap(); updateMap(); });
 
 function updateMap() {
