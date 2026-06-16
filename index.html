@@ -64,8 +64,8 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .seat-map-section { max-width:640px; margin:16px auto 0; background:rgba(255,255,255,0.85); border-radius:16px; padding:14px 8px 16px; border:1px solid rgba(100,180,165,0.3); }
 .seat-map-title { text-align:center; font-size:13px; font-weight:700; color:#1a5a4a; margin-bottom:8px; letter-spacing:1px; }
 .stage-box { background:#ddd; border-radius:6px; text-align:center; font-size:11px; font-weight:700; color:#666; padding:5px 0; letter-spacing:3px; margin-bottom:4px; width:100%; }
-.seat-map { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.seat-map-inner { display:inline-block; min-width:max-content; }
+.seat-map { width:100%; overflow-x:hidden; }
+.seat-map-inner { display:block; width:100%; }
 .seat-row { display:flex; align-items:center; margin-bottom:1px; gap:1px; width:100%; }
 .row-label { font-size:8px; font-weight:700; color:#4a7a70; flex-shrink:0; text-align:center; }
 .seat-ph { flex-shrink:0; }
@@ -78,6 +78,35 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .seat-legend { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:10px; font-size:11px; }
 .seat-legend-item { display:flex; align-items:center; gap:4px; color:#1a3a35; }
 .seat-legend-dot { width:10px; height:10px; border-radius:2px; display:inline-block; }
+/* PC 최적화 (768px 이상) */
+@media (min-width: 768px) {
+  body { padding:36px 24px 60px; }
+  .title-kr { font-size:44px; letter-spacing:6px; }
+  .section-title { font-size:24px; letter-spacing:3px; }
+  .settle-title { font-size:18px; letter-spacing:3px; margin:20px 0 10px; }
+  .info-btn { font-size:13px; padding:7px 20px; }
+  .filter-btn { font-size:14px; padding:8px 24px; }
+  .legend { font-size:13px; gap:20px; }
+  .count-info { font-size:14px; }
+  .table-header { grid-template-columns:90px 40px 56px 1fr 1fr 1fr 120px; padding:10px 14px; gap:4px; }
+  .th { font-size:13px; }
+  .row { grid-template-columns:90px 40px 56px 1fr 1fr 1fr 120px; padding:8px 14px; gap:4px; }
+  .cell { font-size:13px; }
+  .cell.date { font-size:13px; }
+  .cell.time { font-size:12px; }
+  .sinae { font-size:13px; padding:3px 8px; }
+  .fb { font-size:11px; padding:2px 8px; }
+  .jg-badge { font-size:11px; padding:2px 8px; }
+  .month-divider { font-size:14px; padding:9px 14px; }
+  .event-tag { font-size:11px; }
+  .seat-input { font-size:12px; padding:4px 6px; }
+  .count-card .count-name { font-size:14px; }
+  .count-card .count-num { font-size:36px; }
+  .count-card .count-label { font-size:12px; }
+  .seat-map-title { font-size:15px; }
+  .stage-box { font-size:13px; padding:7px 0; }
+  .seat-legend { font-size:13px; gap:12px; }
+}
 </style>
 </head>
 <body>
@@ -106,10 +135,7 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
   <div class="table-header">
     <div class="th">날짜</div><div class="th">요일</div><div class="th">시간</div>
     <div class="th">김우진</div><div class="th">윤심덕</div><div class="th">사내</div>
-    <div class="th" style="display:flex;align-items:center;justify-content:center;gap:4px;">
-      내 좌석
-      <button class="confirm-btn" onclick="confirmFocused()" style="width:auto;padding:2px 8px;font-size:9px;display:inline-block;">✓</button>
-    </div>
+    <div class="th">내 좌석</div>
   </div>
 
   <div class="month-divider" id="div-6">6월</div>
@@ -274,7 +300,16 @@ function updateCounting() {
 function buildMap() {
   const wrap = document.getElementById('seatMapInner');
   wrap.innerHTML = '';
-  const sz = 16, fontSize = 6, labelW = 11;
+
+  // 가장 긴 행 칸수 계산
+  const maxCols = Math.max(...Object.values(SEATS).map(r => r.length));
+  // 섹션 패딩 16px*2, 라벨 양쪽
+  const sectionEl = document.querySelector('.seat-map-section');
+  const availW = sectionEl ? sectionEl.clientWidth - 32 : window.innerWidth - 40;
+  const labelW = window.innerWidth >= 768 ? 16 : 11;
+  // gap은 1px, 칸수만큼
+  const sz = Math.max(10, Math.floor((availW - labelW * 2 - maxCols) / maxCols));
+  const fontSize = Math.max(5, Math.floor(sz * 0.42));
 
   Object.keys(SEATS).forEach(row => {
     const rowEl = document.createElement('div');
