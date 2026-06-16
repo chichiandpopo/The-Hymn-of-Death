@@ -18,20 +18,20 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .filter-btn { padding:6px 16px; border-radius:24px; font-size:12px; font-weight:700; letter-spacing:0.5px; cursor:pointer; border:2px solid transparent; transition:all 0.15s; font-family:'Noto Sans KR',sans-serif; }
 .btn-all { background:#e0f5ef; color:#1a5a4a; border-color:#7acbb8; }
 .btn-all.active { background:#1a8a6a; color:white; border-color:#1a8a6a; }
-.btn-jion { background:#ffd6e4; color:#8b0030; border-color:#ff8fab; }
-.btn-jion.active { background:#ff4d7a; color:white; border-color:#ff4d7a; }
+.btn-jion { background:#e8d5f5; color:#5a0080; border-color:#b07ad0; }
+.btn-jion.active { background:#8b3fc0; color:white; border-color:#8b3fc0; }
 .btn-taemin { background:#cce8f4; color:#003a6a; border-color:#a8d8ea; }
 .btn-taemin.active { background:#3a9fcf; color:white; border-color:#3a9fcf; }
 .legend { display:flex; justify-content:center; gap:12px; margin-bottom:6px; font-size:11px; }
 .legend-item { display:flex; align-items:center; gap:4px; color:#1a3a35; }
 .legend-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
-.dot-jion { background:#ff8fab; } .dot-taemin { background:#a8d8ea; }
+.dot-jion { background:#b07ad0; } .dot-taemin { background:#a8d8ea; }
 .count-info { text-align:center; font-size:12px; color:#4a7a70; margin-bottom:10px; }
 .table-wrap { max-width:640px; margin:0 auto; background:rgba(255,255,255,0.85); border-radius:16px; overflow:hidden; border:1px solid rgba(100,180,165,0.3); }
 .table-header { display:grid; grid-template-columns:58px 26px 38px 1fr 1fr 1fr 70px; background:rgba(30,110,90,0.14); padding:7px 6px; gap:2px; align-items:center; }
 .th { font-size:10px; font-weight:700; color:#1a5a4a; text-align:center; }
 .row { display:grid; grid-template-columns:58px 26px 38px 1fr 1fr 1fr 70px; padding:5px 6px; gap:2px; border-top:1px solid rgba(100,180,165,0.2); align-items:start; }
-.row.jion-row { background:rgba(255,214,228,0.4); }
+.row.jion-row { background:rgba(220,190,255,0.25); }
 .row.taemin-row { background:rgba(204,232,244,0.4); }
 .row.hidden { display:none; }
 .cell { font-size:10px; color:#1a3a35; text-align:center; }
@@ -39,12 +39,12 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .day-sat { color:#0060a0; font-weight:700; } .day-sun { color:#c02020; font-weight:700; } .day-wkd { color:#4a6a60; }
 .cell.time { font-size:9px; color:#4a6a60; }
 .sinae { font-size:10px; font-weight:700; padding:1px 4px; border-radius:6px; display:inline-block; }
-.sinae-jion { background:#ffd6e4; color:#8b0030; } .sinae-taemin { background:#cce8f4; color:#003a6a; }
+.sinae-jion { background:#e8d5f5; color:#5a0080; } .sinae-taemin { background:#cce8f4; color:#003a6a; }
 .month-divider { padding:6px 8px; background:rgba(30,110,90,0.18); font-size:11px; font-weight:700; color:#1a5a4a; text-align:center; letter-spacing:2px; border-top:1px solid rgba(100,180,165,0.3); }
 .event-tag { display:block; font-size:8px; font-weight:500; color:#8a7a50; opacity:0.8; margin-top:1px; white-space:nowrap; text-decoration:none; }
 .event-tag:hover { opacity:1; text-decoration:underline; }
 .fb { display:inline-block; background:#5ecfb8; color:white; font-size:8px; font-weight:700; padding:1px 5px; border-radius:10px; margin-left:2px; vertical-align:middle; }
-.jg-badge { display:inline-block; background:#a855f7; color:white; font-size:8px; font-weight:700; padding:1px 4px; border-radius:3px; margin-left:1px; vertical-align:middle; }
+.jg-badge { display:inline-block; background:#a855f7; color:white; font-size:8px; font-weight:700; padding:2px 7px; border-radius:10px; vertical-align:middle; text-decoration:none; cursor:pointer; }
 .seat-cell { display:flex; flex-direction:column; gap:2px; }
 .seat-input { width:100%; font-size:9px; padding:2px 3px; border:1px solid rgba(100,180,165,0.4); border-radius:5px; background:rgba(255,255,255,0.7); color:#1a3a35; font-family:'Noto Sans KR',sans-serif; text-align:center; }
 .seat-input:focus { outline:none; border-color:#5ecfb8; background:white; }
@@ -55,6 +55,12 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .footer { text-align:center; font-size:10px; color:#4a7a70; margin-top:14px; line-height:1.7; }
 
 /* 좌석 배치도 */
+.counting-box { max-width:640px; margin:12px auto; display:flex; gap:8px; justify-content:center; }
+.count-card { flex:1; background:rgba(255,255,255,0.85); border-radius:12px; padding:10px 6px; text-align:center; border:1px solid rgba(100,180,165,0.3); }
+.count-card .count-name { font-size:11px; font-weight:700; margin-bottom:4px; }
+.count-card .count-num { font-size:28px; font-weight:700; line-height:1; }
+.count-card .count-label { font-size:10px; color:#4a7a70; margin-top:2px; }
+.settle-title { text-align:center; font-size:15px; font-weight:700; color:#1a3a35; letter-spacing:2px; margin:16px 0 8px; }
 .seat-map-section { max-width:640px; margin:16px auto 0; background:rgba(255,255,255,0.85); border-radius:16px; padding:14px 8px 16px; border:1px solid rgba(100,180,165,0.3); }
 .seat-map-title { text-align:center; font-size:13px; font-weight:700; color:#1a5a4a; margin-bottom:8px; letter-spacing:1px; }
 .stage-box { background:#ddd; border-radius:6px; text-align:center; font-size:11px; font-weight:700; color:#666; padding:5px 0; letter-spacing:3px; margin-bottom:4px; width:100%; }
@@ -79,12 +85,12 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
   <div class="musical-label">MUSICAL</div>
   <div class="title-kr">사의찬미</div>
 </div>
-<div class="section-title">출연 일정</div>
 <div class="btn-row">
   <a href="https://chichiandpopo.github.io/The-Hymn-of-Death/benefit.jpg" target="_blank" class="info-btn">🎁 재관람 혜택</a>
   <a href="https://chichiandpopo.github.io/The-Hymn-of-Death/seat.jpg" target="_blank" class="info-btn">🪑 좌석 배치도</a>
   <a href="https://musicalseeya.com/seeyaplay/62/1261" target="_blank" class="info-btn">🔍 시야 확인</a>
 </div>
+<div class="section-title">출연 일정</div>
 <div class="filter-area">
   <button class="filter-btn btn-all active" onclick="setFilter('all')">전체</button>
   <button class="filter-btn btn-jion" onclick="setFilter('jion')">김지온</button>
@@ -134,11 +140,37 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
   <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 18일</div><div class="cell day day-sat">토</div><div class="cell time">15:00</div><div class="cell">온주완</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s21" placeholder="A-11"><button onclick="confirmSeat('s21')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s21"></div></div></div>
   <div class="row jion-row" data-type="jion"><div class="cell date">7월 22일</div><div class="cell day day-wkd">수</div><div class="cell time">16:00</div><div class="cell">임준혁</div><div class="cell">김수연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s22" placeholder="A-11"><button onclick="confirmSeat('s22')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s22"></div></div></div>
   <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 24일</div><div class="cell day day-wkd">금</div><div class="cell time">20:00</div><div class="cell">온주완</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s23" placeholder="A-11"><button onclick="confirmSeat('s23')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s23"></div></div></div>
-  <div class="row jion-row" data-type="jion"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s24" placeholder="A-11"><button onclick="confirmSeat('s24')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s24"></div></div></div>
-  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 26일 <span class="jg-badge">전관</span></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s25" placeholder="A-11"><button onclick="confirmSeat('s25')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s25"></div></div></div>
+  <div class="row jion-row" data-type="jion"><div class="cell date">7월 26일 <a href="https://x.com/i/status/2065313396422296055" target="_blank" class="jg-badge" style="text-decoration:none;">전관</a></div><div class="cell day day-sun">일</div><div class="cell time">14:00</div><div class="cell">선한국</div><div class="cell">정우연</div><div class="cell"><span class="sinae sinae-jion">김지온</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s24" placeholder="A-11"><button onclick="confirmSeat('s24')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s24"></div></div></div>
+  <div class="row taemin-row" data-type="taemin"><div class="cell date">7월 26일 <a href="https://x.com/i/status/2065313396422296055" target="_blank" class="jg-badge" style="text-decoration:none;">전관</a></div><div class="cell day day-sun">일</div><div class="cell time">18:00</div><div class="cell">온주완</div><div class="cell">최연우</div><div class="cell"><span class="sinae sinae-taemin">원태민</span></div><div class="cell seat-cell"><div style="display:flex;gap:2px;"><input class="seat-input" style="flex:1;min-width:0;" inputmode="text" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="characters" id="inp-s25" placeholder="A-11"><button onclick="confirmSeat('s25')" style="flex-shrink:0;background:#5ecfb8;color:white;border:none;border-radius:5px;font-size:9px;font-weight:700;padding:2px 5px;cursor:pointer;font-family:inherit;">✓</button></div><div class="seat-tags" id="tags-s25"></div></div></div>
 </div>
 
 <!-- 좌석 배치도 -->
+<!-- 관람 카운팅 -->
+<div class="settle-title">✨ 2026 사의찬미 정산 ✨</div>
+<div class="counting-box">
+  <div class="count-card">
+    <div class="count-name" style="color:#5a0080;">김지온</div>
+    <div class="count-num" style="color:#5a0080;" id="cnt-jion">0</div>
+    <div class="count-label">회 관람</div>
+  </div>
+  <div class="count-card">
+    <div class="count-name" style="color:#003a6a;">원태민</div>
+    <div class="count-num" style="color:#003a6a;" id="cnt-taemin">0</div>
+    <div class="count-label">회 관람</div>
+  </div>
+  <div class="count-card">
+    <div class="count-name" style="color:#1a5a4a;">합계</div>
+    <div class="count-num" style="color:#1a5a4a;" id="cnt-total">0</div>
+    <div class="count-label">회 관람</div>
+  </div>
+</div>
+<div style="max-width:640px;margin:0 auto 4px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">
+  <button onclick="exportData()" style="padding:5px 14px;background:rgba(255,255,255,0.7);border:1px solid rgba(100,180,165,0.5);border-radius:20px;font-size:11px;font-weight:700;color:#1a5a4a;cursor:pointer;font-family:inherit;">💾 내 데이터 저장</button>
+  <label style="padding:5px 14px;background:rgba(255,255,255,0.7);border:1px solid rgba(100,180,165,0.5);border-radius:20px;font-size:11px;font-weight:700;color:#1a5a4a;cursor:pointer;">
+    📂 데이터 불러오기<input type="file" accept=".json" onchange="importData(event)" style="display:none;">
+  </label>
+</div>
+
 <div class="seat-map-section">
   <div class="seat-map-title">🗺 내 좌석 현황</div>
   <div class="stage-box">S T A G E</div>
@@ -179,8 +211,65 @@ const COLORS = [
   {bg:'#40c060',border:'#006020',label:'5회 이상'},
 ];
 
-const showSeats = {};
+const showSeats = JSON.parse(localStorage.getItem('sauichanmi_seats') || '{}');
 let focusedId = null;
+
+// 데이터 어떤 showId가 jion/taemin인지
+const SHOW_TYPE = {
+  s1:'jion',s3:'jion',s6:'jion',s8:'jion',s9:'jion',s13:'jion',
+  s15:'jion',s17:'jion',s18:'jion',s20:'jion',s22:'jion',s24:'jion',
+  s2:'taemin',s4:'taemin',s5:'taemin',s7:'taemin',s10:'taemin',s11:'taemin',
+  s12:'taemin',s14:'taemin',s16:'taemin',s19:'taemin',s21:'taemin',s23:'taemin',s25:'taemin',
+};
+
+function exportData() {
+  const data = JSON.stringify(showSeats, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '사의찬미_내좌석.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      Object.keys(data).forEach(sid => { showSeats[sid] = data[sid]; });
+      saveSeats();
+      Object.keys(showSeats).forEach(sid => renderTags(sid));
+      updateMap();
+      updateCounting();
+      alert('데이터를 불러왔어요! 🎉');
+    } catch(err) {
+      alert('파일을 읽을 수 없어요 ㅠㅠ');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+function saveSeats() {
+  localStorage.setItem('sauichanmi_seats', JSON.stringify(showSeats));
+}
+
+function updateCounting() {
+  let jion = 0, taemin = 0;
+  Object.keys(showSeats).forEach(sid => {
+    if ((showSeats[sid]||[]).length > 0) {
+      if (SHOW_TYPE[sid] === 'jion') jion++;
+      else if (SHOW_TYPE[sid] === 'taemin') taemin++;
+    }
+  });
+  document.getElementById('cnt-jion').textContent = jion;
+  document.getElementById('cnt-taemin').textContent = taemin;
+  document.getElementById('cnt-total').textContent = jion + taemin;
+}
 
 function buildMap() {
   const wrap = document.getElementById('seatMapInner');
@@ -287,6 +376,8 @@ function confirmFocused() {
     showSeats[focusedId].push(key);
     renderTags(focusedId);
     updateMap();
+    saveSeats();
+    updateCounting();
   }
   input.value = '';
   input.style.borderColor = '';
@@ -302,6 +393,8 @@ function removeSeat(sid, key) {
   showSeats[sid] = (showSeats[sid]||[]).filter(s => s !== key);
   renderTags(sid);
   updateMap();
+  saveSeats();
+  updateCounting();
 }
 
 function renderTags(sid) {
@@ -352,6 +445,10 @@ document.querySelectorAll('.seat-input').forEach(inp => {
 });
 
 buildMap();
+// 저장된 데이터 복원
+Object.keys(showSeats).forEach(sid => renderTags(sid));
+updateMap();
+updateCounting();
 </script>
 </body>
 </html>
