@@ -421,8 +421,9 @@ function copyCast(sid) {
   const day  = row.querySelector('.cell.day')?.textContent?.trim() || '';
   const time = row.querySelector('.cell.time')?.textContent?.trim() || '';
 
-  // 이벤트 태그
-  const eventTag = dateCell?.querySelector('.event-tag')?.textContent?.trim() || '';
+  // 이벤트 태그 (이모티콘 제외 텍스트만)
+  const eventTagRaw = dateCell?.querySelector('.event-tag')?.textContent?.trim() || '';
+  const eventTag = eventTagRaw.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{1F300}-\u{1F9FF}\u{FE00}-\u{FEFF}\uFE0F]/gu, '').trim();
 
   // 배우 이름 (sinae 뱃지에서 fb 제외)
   const cells = row.querySelectorAll('.cell:not(.date):not(.day):not(.time):not(.seat-cell)');
