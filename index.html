@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -413,11 +414,13 @@ function parseSeat(val) {
 }
 
 function copyCast(sid) {
-  const row = document.querySelector(`.row[data-sid="${sid}"]`);
+  // inp-sid와 같은 행 찾기
+  const input = document.getElementById('inp-' + sid);
+  const row = input ? input.closest('.row') : null;
   if (!row) return;
 
   const dateCell = row.querySelector('.cell.date');
-  const date = dateCell?.childNodes[0]?.textContent?.trim() || '';
+  const date = dateCell ? [...dateCell.childNodes].filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent.trim()).join('').trim() : '';
   const day  = row.querySelector('.cell.day')?.textContent?.trim() || '';
   const time = row.querySelector('.cell.time')?.textContent?.trim() || '';
 
@@ -425,7 +428,7 @@ function copyCast(sid) {
   const eventTagRaw = dateCell?.querySelector('.event-tag')?.textContent?.trim() || '';
   const eventTag = eventTagRaw.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{1F300}-\u{1F9FF}\u{FE00}-\u{FEFF}\uFE0F]/gu, '').trim();
 
-  // 배우 이름 (sinae 뱃지에서 fb 제외)
+  // 배우 이름
   const cells = row.querySelectorAll('.cell:not(.date):not(.day):not(.time):not(.seat-cell)');
   function getActorName(cell) {
     if (!cell) return '';
@@ -439,8 +442,8 @@ function copyCast(sid) {
   let text = `뮤지컬 사의찬미\n${date} (${day}) ${time}\n${wujin} / ${shim} / ${sinae}`;
   if (eventTag) text += `\n${eventTag}`;
 
+  const btn = row.querySelector('.copy-btn');
   navigator.clipboard.writeText(text).then(() => {
-    const btn = row.querySelector('.copy-btn');
     if (!btn) return;
     btn.textContent = '✅'; btn.classList.add('copied');
     setTimeout(() => { btn.textContent = '🌊'; btn.classList.remove('copied'); }, 1500);
@@ -449,7 +452,6 @@ function copyCast(sid) {
     ta.value = text; ta.style.cssText = 'position:fixed;opacity:0;';
     document.body.appendChild(ta); ta.select();
     document.execCommand('copy'); document.body.removeChild(ta);
-    const btn = row.querySelector('.copy-btn');
     if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = '🌊', 1500); }
   });
 }
