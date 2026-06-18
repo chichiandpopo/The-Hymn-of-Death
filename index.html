@@ -136,7 +136,7 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
   <div class="legend-item"><span class="legend-dot dot-jion"></span>김지온 출연</div>
   <div class="legend-item"><span class="legend-dot dot-taemin"></span>원태민 출연</div>
 </div>
-<div class="count-info" id="countInfo">전체 25회</div>
+<div class="count-info" id="countInfo"></div>
 
 <div class="table-wrap">
   <div class="table-header">
@@ -467,7 +467,6 @@ function renderTags(sid) {
 }
 
 // 필터
-const counts = {all:25, jion:12, taemin:13};
 const labels = {all:'전체', jion:'김지온', taemin:'원태민'};
 function setFilter(type) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -482,7 +481,8 @@ function setFilter(type) {
       !r.classList.contains('hidden') && r.querySelector('.cell.date') && r.querySelector('.cell.date').textContent.startsWith(m + '월')
     ) ? '' : 'none';
   });
-  document.getElementById('countInfo').textContent = labels[type] + ' ' + counts[type] + '회';
+  const total = [...document.querySelectorAll('.row[data-type]')].filter(r => !r.classList.contains('hidden')).length;
+  document.getElementById('countInfo').textContent = labels[type] + ' ' + total + '회';
 }
 
 // focus 추적 및 입력 감지
@@ -498,6 +498,7 @@ buildMap();
 Object.keys(showSeats).forEach(sid => renderTags(sid));
 updateMap();
 updateCounting();
+setFilter('all');
 </script>
 </body>
 </html>
