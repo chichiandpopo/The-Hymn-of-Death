@@ -73,6 +73,15 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 .settle-title { text-align:center; font-size:15px; font-weight:700; color:#1a3a35; letter-spacing:2px; margin:16px 0 8px; }
 .seat-map-section { max-width:640px; margin:16px auto 0; background:rgba(255,255,255,0.85); border-radius:16px; padding:14px 8px 16px; border:1px solid rgba(100,180,165,0.3); }
 .seat-map-title { text-align:center; font-size:13px; font-weight:700; color:#1a5a4a; margin-bottom:8px; letter-spacing:1px; }
+.map-filter-area { display:flex; justify-content:center; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
+.map-filter-btn { padding:4px 14px; border-radius:16px; font-size:11px; font-weight:700; cursor:pointer; border:2px solid transparent; font-family:inherit; transition:all 0.15s; }
+.map-btn-all { background:#e0f5ef; color:#1a5a4a; border-color:#7acbb8; }
+.map-btn-all.active { background:#1a8a6a; color:white; border-color:#1a8a6a; }
+.map-btn-jion { background:#e8d5f5; color:#5a0080; border-color:#b07ad0; }
+.map-btn-jion.active { background:#8b3fc0; color:white; border-color:#8b3fc0; }
+.map-btn-taemin { background:#cce8f4; color:#003a6a; border-color:#a8d8ea; }
+.map-btn-taemin.active { background:#3a9fcf; color:white; border-color:#3a9fcf; }
+.seat.dimmed { background:#f0f0f0 !important; color:#ccc !important; border-color:#e0e0e0 !important; }
 .stage-box { background:#ddd; border-radius:6px; text-align:center; font-size:11px; font-weight:700; color:#666; padding:5px 0; letter-spacing:3px; margin-bottom:4px; width:100%; }
 .seat-map { width:100%; overflow-x:hidden; }
 .seat-map-inner { display:block; width:100%; }
@@ -403,19 +412,44 @@ function buildMap() {
 
 window.addEventListener('resize', () => { buildMap(); updateMap(); });
 
+let mapFilter = 'all';
+
+function setMapFilter(type) {
+  mapFilter = type;
+  updateMap();
+}
+
 function updateMap() {
-  document.querySelectorAll('.seat').forEach(el => {
-    el.className = 'seat';
-  });
+  document.querySelectorAll('.seat').forEach(el => { el.className = 'seat'; });
+
+  // 필터에 따른 집계
   const cnt = {};
-  Object.values(showSeats).forEach(seats => {
-    seats.forEach(s => { cnt[s] = (cnt[s]||0) + 1; });
+  Object.keys(showSeats).forEach(sid => {
+    if (mapFilter !== 'all') {
+      const input = document.getElementById('inp-' + sid);
+      const row = input ? input.closest('.row') : null;
+      if (!row || row.dataset.type !== mapFilter) return;
+    }
+    (showSeats[sid] || []).forEach(s => { cnt[s] = (cnt[s]||0) + 1; });
   });
+
+  // 필터 외 좌석 dimmed 처리
+  if (mapFilter !== 'all') {
+    const allCnt = {};
+    Object.values(showSeats).forEach(seats => seats.forEach(s => { allCnt[s] = 1; }));
+    Object.keys(allCnt).forEach(key => {
+      if (!cnt[key]) {
+        const el = document.getElementById('S-' + key);
+        if (el) el.classList.add('dimmed');
+      }
+    });
+  }
+
   Object.keys(cnt).forEach(key => {
     const el = document.getElementById('S-' + key);
     if (el) {
-      const idx = Math.min(cnt[key], 5) - 1;
-      el.classList.add('mk' + (idx+1));
+      el.classList.remove('dimmed');
+      el.classList.add('mk' + (Math.min(cnt[key], 5)));
       el.title = key + ' (' + cnt[key] + '회 관람)';
     }
   });
@@ -574,6 +608,8 @@ function setFilter(type) {
   });
   const total = [...document.querySelectorAll('.row[data-type]')].filter(r => !r.classList.contains('hidden')).length;
   document.getElementById('countInfo').textContent = labels[type] + ' ' + total + '회';
+  // 배치도도 함께 연동
+  setMapFilter(type);
 }
 
 // focus 추적 및 입력 감지
