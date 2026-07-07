@@ -222,17 +222,17 @@ body { font-family:'Noto Sans KR',sans-serif; background:linear-gradient(180deg,
 <!-- 관람 카운팅 -->
 <div class="settle-title">✨ 2026 사의찬미 정산 ✨</div>
 <div class="counting-box">
-  <div class="count-card">
+  <div class="count-card" data-count="jion">
     <div class="count-name" style="color:#5a0080;">김지온</div>
     <div class="count-num" style="color:#5a0080;" id="cnt-jion">0</div>
     <div class="count-label" id="cnt-jion-total">/ 12회</div>
   </div>
-  <div class="count-card">
+  <div class="count-card" data-count="taemin">
     <div class="count-name" style="color:#003a6a;">원태민</div>
     <div class="count-num" style="color:#003a6a;" id="cnt-taemin">0</div>
     <div class="count-label" id="cnt-taemin-total">/ 13회</div>
   </div>
-  <div class="count-card">
+  <div class="count-card" data-count="all">
     <div class="count-name" style="color:#1a5a4a;">합계</div>
     <div class="count-num" style="color:#1a5a4a;" id="cnt-total">0</div>
     <div class="count-label" id="cnt-total-total">/ 25회</div>
@@ -608,6 +608,11 @@ function setFilter(type) {
   });
   const total = [...document.querySelectorAll('.row[data-type]')].filter(r => !r.classList.contains('hidden')).length;
   document.getElementById('countInfo').textContent = labels[type] + ' ' + total + '회';
+  // 카운팅 카드 필터링
+  document.querySelectorAll('.count-card[data-count]').forEach(card => {
+    const ct = card.dataset.count;
+    card.style.display = (type === 'all' || ct === type || ct === 'all') ? '' : 'none';
+  });
   // 배치도도 함께 연동
   setMapFilter(type);
 }
